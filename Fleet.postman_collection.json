@@ -1,0 +1,359 @@
+{
+	"info": {
+		"_postman_id": "a5464a0b-c208-4515-9499-155ad5062bab",
+		"name": "Fleet",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Car",
+			"item": [
+				{
+					"name": "Add car",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjMwMzYxODQ0LCJleHAiOjE2MzA5NjY2NDR9.0WuObP4FmCYVHTn6NEzSNv4Rf6OydR_mvPcHuDYs0rMjj6vQhEtyq39nkVVRthOBSZalKh5o9IeVzTgSpki9dA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"make\": \"mercedes\",\r\n    \"model\": \"GLA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://fleet-dd.herokuapp.com/fleet/api/car",
+							"protocol": "http",
+							"host": [
+								"fleet-dd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"fleet",
+								"api",
+								"car"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All cars",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjI5MjM5MjU3LCJleHAiOjE2Mjk4NDQwNTd9.y6G7JlhOwC4akexj4pQFC0432wVcR3alq2fVglIeN1Q7ztd5wIKGu6BTCH2ny3jQAl5jtmmMOa_4c1AqCf6hhQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"contentType": "image/jpeg",
+									"type": "file",
+									"src": "/C:/Users/Bianca/Desktop/bucatarie.JPG"
+								},
+								{
+									"key": "description",
+									"value": "bucatarie",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "bucatarie",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "bucatarie",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://fleet-dd.herokuapp.com/fleet/api/car",
+							"protocol": "http",
+							"host": [
+								"fleet-dd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"fleet",
+								"api",
+								"car"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update car",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjI5NDk5MjE5LCJleHAiOjE2MzAxMDQwMTl9.PdaAgtSvfDFoy8WgZ53MJ6VNIZFK_y35iqKxYuJ8ILyfzUJN1n5c8xFIq4YOzlQrrniipnSHQVp97ZzeBM19Ew",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"make\": \"mercedes\",\r\n    \"model\": \"GLC\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://fleet-dd.herokuapp.com/fleet/api/car/1",
+							"protocol": "http",
+							"host": [
+								"fleet-dd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"fleet",
+								"api",
+								"car",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete car by id",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjI5MjM2MzE5LCJleHAiOjE2Mjk4NDExMTl9.vazD0iojhtsAU8IT1A78FlKSJ_VqwvHWxg0ziGQqlheLGIT-pW5IAFNdEQlMxU3LHTmfML5H-1KLBB-X5Mymtg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"contentType": "image/jpeg",
+									"type": "file",
+									"src": "/C:/Users/Bianca/Desktop/bucatarie.JPG"
+								},
+								{
+									"key": "description",
+									"value": "bucatarie",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "bucatarie",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "bucatarie",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://fleet-dd.herokuapp.com/fleet/api/car/1",
+							"protocol": "http",
+							"host": [
+								"fleet-dd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"fleet",
+								"api",
+								"car",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get car by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjI5NDk5MjE5LCJleHAiOjE2MzAxMDQwMTl9.PdaAgtSvfDFoy8WgZ53MJ6VNIZFK_y35iqKxYuJ8ILyfzUJN1n5c8xFIq4YOzlQrrniipnSHQVp97ZzeBM19Ew",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://fleet-dd.herokuapp.com/fleet/api/car/1",
+							"protocol": "http",
+							"host": [
+								"fleet-dd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"fleet",
+								"api",
+								"car",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sign Up",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"test@test.com\",\r\n  \"name\": \"test\",\r\n  \"password\": \"parola\",\r\n  \"username\": \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://fleet-dd.herokuapp.com/fleet/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"fleet-dd",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"fleet",
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sign In",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"usernameOrEmail\": \"test\",\r\n  \"password\": \"parola\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://fleet-dd.herokuapp.com/fleet/api/auth/signin",
+					"protocol": "http",
+					"host": [
+						"fleet-dd",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"fleet",
+						"api",
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "localhost:5000/"
+		}
+	]
+}
