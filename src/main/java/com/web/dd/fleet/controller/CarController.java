@@ -26,6 +26,12 @@ public class CarController {
         return carService.getAllCarsForCurrentUser();
     }
 
+    @GetMapping("/{carId}")
+//    @PreAuthorize("hasRole('ROLE_USER')")
+    public ResponseEntity<CarPayload> getCarById(@PathVariable Long carId) {
+        return carService.getCarById(carId);
+    }
+
     @DeleteMapping("/{carId}")
 //    @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<List<CarPayload>> deleteCar(@PathVariable Long carId) {

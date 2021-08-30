@@ -16,7 +16,6 @@ public class CarPayload implements Serializable {
     private Long id;
     private String model;
     private String make;
-    private UserPayload user;
     private Set<OperationPayload> operations;
 
     public static CarPayload createJobResponsePayloadFromJob(Car car) {
@@ -24,7 +23,6 @@ public class CarPayload implements Serializable {
                 .id(car.getId())
                 .model(car.getModel())
                 .make(car.getMake())
-                .user(UserPayload.createUserPayloadFromUser(car.getUser()))
                 .operations(car.getOperations() == null ? null : car.getOperations().stream().map(OperationPayload::createOperationPayloadFromOperation).collect(Collectors.toSet()))
                 .build();
     }

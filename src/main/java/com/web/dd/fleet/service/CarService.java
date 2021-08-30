@@ -41,6 +41,25 @@ public class CarService {
         return ResponseEntity.ok(mapListOfCarsToResponse(carRepository.findAllByUser(user.get())));
     }
 
+    public ResponseEntity<CarPayload> getCarById(Long carId) {
+        UserPrincipal userPrincipal = AppUtils.getCurrentUserDetails();
+        Optional<User> user = userRepository.findById(userPrincipal.getId());
+        if (!user.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+
+        Optional<Car> optionalCar = carRepository.findById(carId);
+        if (!optionalCar.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+
+        if (!optionalCar.get().getUser().getId().equals(user.get().getId())) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+
+        return ResponseEntity.ok(CarPayload.createJobResponsePayloadFromJob(optionalCar.get()));
+    }
+
     public ResponseEntity<List<CarPayload>> saveCar(CarPayload carPayload) {
         UserPrincipal userPrincipal = AppUtils.getCurrentUserDetails();
         Optional<User> user = userRepository.findById(userPrincipal.getId());

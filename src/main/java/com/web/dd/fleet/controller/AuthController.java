@@ -1,9 +1,6 @@
 package com.web.dd.fleet.controller;
 
-import com.web.dd.fleet.payload.ApiResponse;
-import com.web.dd.fleet.payload.JwtAuthenticationResponse;
-import com.web.dd.fleet.payload.LoginPayload;
-import com.web.dd.fleet.payload.SignUpPayload;
+import com.web.dd.fleet.payload.*;
 import com.web.dd.fleet.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +22,7 @@ public class AuthController {
     }
 
     @PostMapping("/signin")
-    public ResponseEntity<JwtAuthenticationResponse> authenticateUser(@Valid @RequestBody LoginPayload loginRequest) {
+    public ResponseEntity<AuthenticationResponse> authenticateUser(@Valid @RequestBody LoginPayload loginRequest) {
         return authService.authenticateUser(loginRequest);
     }
 

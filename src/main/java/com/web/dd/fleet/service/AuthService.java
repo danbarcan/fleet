@@ -1,10 +1,7 @@
 package com.web.dd.fleet.service;
 
 import com.web.dd.fleet.entity.User;
-import com.web.dd.fleet.payload.ApiResponse;
-import com.web.dd.fleet.payload.JwtAuthenticationResponse;
-import com.web.dd.fleet.payload.LoginPayload;
-import com.web.dd.fleet.payload.SignUpPayload;
+import com.web.dd.fleet.payload.*;
 import com.web.dd.fleet.repository.UserRepository;
 import com.web.dd.fleet.security.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +34,7 @@ public class AuthService {
         this.userRepository = userRepository;
     }
 
-    public ResponseEntity<JwtAuthenticationResponse> authenticateUser(LoginPayload loginRequest) {
+    public ResponseEntity<AuthenticationResponse> authenticateUser(LoginPayload loginRequest) {
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
@@ -49,7 +46,7 @@ public class AuthService {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         String jwt = tokenProvider.generateToken(authentication);
-        return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
+        return ResponseEntity.ok(new AuthenticationResponse(jwt, UserPayload.createUserPayloadFromUser(userRepository.findByEmailOrUsername(loginRequest.getUsernameOrEmail(), loginRequest.getUsernameOrEmail()).get())));
     }
 
     public ResponseEntity<ApiResponse> registerUser(SignUpPayload signUpPayload) {
