@@ -1,8 +1,11 @@
 package com.web.dd.fleet.service;
 
+import com.web.dd.fleet.entity.Bill;
 import com.web.dd.fleet.entity.Car;
 import com.web.dd.fleet.entity.User;
+import com.web.dd.fleet.payload.BillPayload;
 import com.web.dd.fleet.payload.CarPayload;
+import com.web.dd.fleet.repository.BillRepository;
 import com.web.dd.fleet.repository.CarRepository;
 import com.web.dd.fleet.repository.OperationRepository;
 import com.web.dd.fleet.repository.UserRepository;
@@ -23,12 +26,14 @@ public class CarService {
     private CarRepository carRepository;
     private UserRepository userRepository;
     private OperationRepository operationRepository;
+    private BillRepository billRepository;
 
     @Autowired
-    public CarService(final CarRepository carRepository, final UserRepository userRepository, final OperationRepository operationRepository) {
+    public CarService(final CarRepository carRepository, final UserRepository userRepository, final OperationRepository operationRepository, final BillRepository billRepository) {
         this.carRepository = carRepository;
         this.userRepository = userRepository;
         this.operationRepository = operationRepository;
+        this.billRepository = billRepository;
     }
 
     public ResponseEntity<List<CarPayload>> getAllCarsForCurrentUser() {
@@ -121,6 +126,31 @@ public class CarService {
         carRepository.delete(car);
 
         return ResponseEntity.ok(mapListOfCarsToResponse(carRepository.findAllByUser(car.getUser())));
+    }
+
+    public ResponseEntity<CarPayload> saveBill(Long carId, BillPayload billPayload) {
+        UserPrincipal userPrincipal = AppUtils.getCurrentUserDetails();
+        Optional<User> user = userRepository.findById(userPrincipal.getId());
+        if (!user.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+
+        Optional<Car> carOptional = carRepository.findById(carId);
+        if (!carOptional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+
+        Car car = carOptional.get();
+
+        if (!car.getUser().getId().equals(user.get().getId())) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+
+        Bill bill = Bill.createJobFromJobPayload(billPayload, user.get(), car);
+
+        billRepository.save(bill);
+
+        return ResponseEntity.ok(CarPayload.createJobResponsePayloadFromJob(carRepository.getById(carId)));
     }
 
     private List<CarPayload> mapListOfCarsToResponse(List<Car> cars) {

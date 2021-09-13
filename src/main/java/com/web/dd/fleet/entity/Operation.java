@@ -7,6 +7,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Data
 @Builder
@@ -22,6 +23,12 @@ public class Operation implements Serializable {
 
     @NotBlank
     private String name;
+
+    @NotNull
+    private BillType type;
+
+    @NotNull
+    private LocalDate validUntil;
 
     @NotBlank
     private String operatorName;

@@ -17,13 +17,15 @@ public class CarPayload implements Serializable {
     private String model;
     private String make;
     private Set<OperationPayload> operations;
+    private Set<BillPayload> bills;
 
     public static CarPayload createJobResponsePayloadFromJob(Car car) {
         return CarPayload.builder()
                 .id(car.getId())
                 .model(car.getModel())
                 .make(car.getMake())
-                .operations(car.getOperations() == null ? null : car.getOperations().stream().map(OperationPayload::createOperationPayloadFromOperation).collect(Collectors.toSet()))
+//                .operations(car.getOperations() == null ? null : car.getOperations().stream().map(OperationPayload::createOperationPayloadFromOperation).collect(Collectors.toSet()))
+                .bills(car.getBills() == null ? null : car.getBills().stream().map(BillPayload::createBillPayloadFromOperation).collect(Collectors.toSet()))
                 .build();
     }
 }
