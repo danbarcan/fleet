@@ -1,6 +1,5 @@
 package com.web.dd.fleet.controller;
 
-import com.web.dd.fleet.payload.BillPayload;
 import com.web.dd.fleet.payload.CarPayload;
 import com.web.dd.fleet.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,11 +48,5 @@ public class CarController {
 //    @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<List<CarPayload>> updateCar(@PathVariable Long carId, @Valid @RequestBody CarPayload carPayload) {
         return carService.updateCar(carId, carPayload);
-    }
-
-    @PostMapping("/{carId}/bill")
-//    @PreAuthorize("hasRole('ROLE_USER')")
-    public ResponseEntity<CarPayload> addBill(@PathVariable Long carId, @Valid @RequestBody BillPayload billPayload) {
-        return carService.saveBill(carId, billPayload);
     }
 }

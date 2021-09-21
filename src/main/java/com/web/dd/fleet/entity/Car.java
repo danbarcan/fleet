@@ -27,6 +27,12 @@ public class Car implements Serializable {
     private String make;
 
     @NotNull
+    private String type;
+
+    @NotNull
+    private String registration;
+
+    @NotNull
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;

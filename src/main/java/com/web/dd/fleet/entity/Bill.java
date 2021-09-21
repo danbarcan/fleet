@@ -9,9 +9,11 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Data
 @Builder
@@ -28,11 +30,16 @@ public class Bill implements Serializable {
     @NotBlank
     private String description;
 
+    private String provider;
+
     @NotNull
     private BillType type;
 
-    @NotNull
     private LocalDate validUntil;
+
+    private LocalDate date;
+
+    private BigDecimal price;
 
     @NotNull
     @Column(columnDefinition = "Timestamp default current_timestamp")
@@ -53,14 +60,25 @@ public class Bill implements Serializable {
     @JoinColumn(name = "image_id")
     private Image image;
 
-    public static Bill createJobFromJobPayload(BillPayload billPayload, User user, Car car) {
+    public static Bill createJobFromBillPayload(BillPayload billPayload, User user, Car car) {
         return Bill.builder()
                 .description(billPayload.getDescription())
+                .provider(billPayload.getProvider())
                 .type(billPayload.getType())
-                .validUntil(billPayload.getValidUntil())
+                .validUntil(LocalDate.parse(billPayload.getValidUntil(), DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+                .date(LocalDate.parse(billPayload.getDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+                .price(billPayload.getPrice())
                 .car(car)
                 .timestamp(Timestamp.from(Instant.now()))
                 .user(user)
                 .build();
+    }
+    public void updateFromPayload(BillPayload billPayload) {
+        setProvider(billPayload.getProvider());
+        setDescription(billPayload.getDescription());
+        setType(billPayload.getType());
+        setValidUntil(LocalDate.parse(billPayload.getValidUntil(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        setDate(LocalDate.parse(billPayload.getDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        setPrice(billPayload.getPrice());
     }
 }

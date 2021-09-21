@@ -16,6 +16,8 @@ public class CarPayload implements Serializable {
     private Long id;
     private String model;
     private String make;
+    private String type;
+    private String registration;
     private Set<OperationPayload> operations;
     private Set<BillPayload> bills;
 
@@ -24,6 +26,8 @@ public class CarPayload implements Serializable {
                 .id(car.getId())
                 .model(car.getModel())
                 .make(car.getMake())
+                .type(car.getType())
+                .registration(car.getRegistration())
 //                .operations(car.getOperations() == null ? null : car.getOperations().stream().map(OperationPayload::createOperationPayloadFromOperation).collect(Collectors.toSet()))
                 .bills(car.getBills() == null ? null : car.getBills().stream().map(BillPayload::createBillPayloadFromOperation).collect(Collectors.toSet()))
                 .build();
