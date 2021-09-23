@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -73,6 +75,10 @@ public class CarService {
                 .model(carPayload.getModel())
                 .type(carPayload.getType())
                 .registration(carPayload.getRegistration())
+                .itpDate(LocalDate.parse(carPayload.getItpDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+                .rcaDate(LocalDate.parse(carPayload.getRcaDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+                .cascoDate(LocalDate.parse(carPayload.getCascoDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+                .vignetteDate(LocalDate.parse(carPayload.getVignetteDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")))
                 .build();
 
         carRepository.save(car);
@@ -102,6 +108,10 @@ public class CarService {
         car.setModel(carPayload.getModel());
         car.setType(carPayload.getType());
         car.setRegistration(carPayload.getRegistration());
+        car.setItpDate(LocalDate.parse(carPayload.getItpDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        car.setRcaDate(LocalDate.parse(carPayload.getRcaDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        car.setCascoDate(LocalDate.parse(carPayload.getCascoDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        car.setVignetteDate(LocalDate.parse(carPayload.getVignetteDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 
         carRepository.save(car);
 

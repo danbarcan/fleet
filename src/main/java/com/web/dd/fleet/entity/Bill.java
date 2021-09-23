@@ -32,7 +32,6 @@ public class Bill implements Serializable {
 
     private String provider;
 
-    @NotNull
     private BillType type;
 
     private LocalDate validUntil;

@@ -6,6 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Set;
 
 @Data
@@ -31,6 +32,14 @@ public class Car implements Serializable {
 
     @NotNull
     private String registration;
+
+    private LocalDate itpDate;
+
+    private LocalDate rcaDate;
+
+    private LocalDate vignetteDate;
+
+    private LocalDate cascoDate;
 
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER)
