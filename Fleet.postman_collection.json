@@ -19,7 +19,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjMwMzYxODQ0LCJleHAiOjE2MzA5NjY2NDR9.0WuObP4FmCYVHTn6NEzSNv4Rf6OydR_mvPcHuDYs0rMjj6vQhEtyq39nkVVRthOBSZalKh5o9IeVzTgSpki9dA",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjMyNDI4MDY5LCJleHAiOjE2MzMwMzI4Njl9.aP0OQ-WZXZYg2TNIZPKRdXVbYs7Xtq2GB2Vs_2tS6YDh9MyDQk_e4W46BivDINUIi4TiivXgiWyvhEwVGFxYZA",
 									"type": "string"
 								}
 							]
@@ -28,7 +28,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"make\": \"mercedes\",\r\n    \"model\": \"GLA\"\r\n}",
+							"raw": "{\r\n    \"make\": \"mercedes\",\r\n    \"model\": \"GLK\",\r\n    \"registration\": \"B-111-DOI\",\r\n    \"type\": \"A\",\r\n    \"itpDate\": \"2022-12-13\",\r\n    \"rcaDate\": \"2022-06-13\",\r\n    \"vignetteDate\": \"2022-03-13\",\r\n    \"cascoDate\": \"2022-12-13\",\r\n    \"revisionDate\": \"2021-12-27\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -36,8 +36,8 @@
 							}
 						},
 						"url": {
-							"raw": "http://fleet-dd.herokuapp.com/fleet/api/car",
-							"protocol": "http",
+							"raw": "https://fleet-dd.herokuapp.com/fleet/api/car",
+							"protocol": "https",
 							"host": [
 								"fleet-dd",
 								"herokuapp",
@@ -64,7 +64,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjI5MjM5MjU3LCJleHAiOjE2Mjk4NDQwNTd9.y6G7JlhOwC4akexj4pQFC0432wVcR3alq2fVglIeN1Q7ztd5wIKGu6BTCH2ny3jQAl5jtmmMOa_4c1AqCf6hhQ",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjMyNDI4MDY5LCJleHAiOjE2MzMwMzI4Njl9.aP0OQ-WZXZYg2TNIZPKRdXVbYs7Xtq2GB2Vs_2tS6YDh9MyDQk_e4W46BivDINUIi4TiivXgiWyvhEwVGFxYZA",
 									"type": "string"
 								}
 							]
@@ -95,16 +95,11 @@
 									"value": "bucatarie",
 									"type": "text"
 								}
-							],
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							]
 						},
 						"url": {
-							"raw": "http://fleet-dd.herokuapp.com/fleet/api/car",
-							"protocol": "http",
+							"raw": "https://fleet-dd.herokuapp.com/fleet/api/car",
+							"protocol": "https",
 							"host": [
 								"fleet-dd",
 								"herokuapp",
@@ -130,7 +125,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjI5NDk5MjE5LCJleHAiOjE2MzAxMDQwMTl9.PdaAgtSvfDFoy8WgZ53MJ6VNIZFK_y35iqKxYuJ8ILyfzUJN1n5c8xFIq4YOzlQrrniipnSHQVp97ZzeBM19Ew",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjMyMjYyNDk3LCJleHAiOjE2MzI4NjcyOTd9.eaZaKWLb2GghSAotG5pcvGNBsCfRZo42lzzdzbppSR7ysYAHkqBzWBGAOD_m7iI7TOcAbyA13HcoY8lGtGOWsA",
 									"type": "string"
 								}
 							]
@@ -139,7 +134,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"make\": \"mercedes\",\r\n    \"model\": \"GLC\"\r\n}",
+							"raw": "{\r\n    \"make\": \"mercedes\",\r\n    \"model\": \"GLC Updated\",\r\n    \"registration\": \"B-111-DOI\",\r\n    \"type\": \"A\",\r\n    \"itpDate\": \"2022-12-13\",\r\n    \"rcaDate\": \"2022-06-13\",\r\n    \"vignetteDate\": \"2022-03-13\",\r\n    \"cascoDate\": \"2022-12-13\",\r\n    \"revisionDate\": \"2021-12-27\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -147,8 +142,8 @@
 							}
 						},
 						"url": {
-							"raw": "http://fleet-dd.herokuapp.com/fleet/api/car/1",
-							"protocol": "http",
+							"raw": "https://fleet-dd.herokuapp.com/fleet/api/car/1",
+							"protocol": "https",
 							"host": [
 								"fleet-dd",
 								"herokuapp",
@@ -175,7 +170,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjI5MjM2MzE5LCJleHAiOjE2Mjk4NDExMTl9.vazD0iojhtsAU8IT1A78FlKSJ_VqwvHWxg0ziGQqlheLGIT-pW5IAFNdEQlMxU3LHTmfML5H-1KLBB-X5Mymtg",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjMyMjYyNDk3LCJleHAiOjE2MzI4NjcyOTd9.eaZaKWLb2GghSAotG5pcvGNBsCfRZo42lzzdzbppSR7ysYAHkqBzWBGAOD_m7iI7TOcAbyA13HcoY8lGtGOWsA",
 									"type": "string"
 								}
 							]
@@ -206,16 +201,11 @@
 									"value": "bucatarie",
 									"type": "text"
 								}
-							],
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							]
 						},
 						"url": {
-							"raw": "http://fleet-dd.herokuapp.com/fleet/api/car/1",
-							"protocol": "http",
+							"raw": "https://fleet-dd.herokuapp.com/fleet/api/car/2",
+							"protocol": "https",
 							"host": [
 								"fleet-dd",
 								"herokuapp",
@@ -225,7 +215,7 @@
 								"fleet",
 								"api",
 								"car",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -243,7 +233,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjI5NDk5MjE5LCJleHAiOjE2MzAxMDQwMTl9.PdaAgtSvfDFoy8WgZ53MJ6VNIZFK_y35iqKxYuJ8ILyfzUJN1n5c8xFIq4YOzlQrrniipnSHQVp97ZzeBM19Ew",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjMyMjYyNDk3LCJleHAiOjE2MzI4NjcyOTd9.eaZaKWLb2GghSAotG5pcvGNBsCfRZo42lzzdzbppSR7ysYAHkqBzWBGAOD_m7iI7TOcAbyA13HcoY8lGtGOWsA",
 									"type": "string"
 								}
 							]
@@ -260,8 +250,8 @@
 							}
 						},
 						"url": {
-							"raw": "http://fleet-dd.herokuapp.com/fleet/api/car/1",
-							"protocol": "http",
+							"raw": "https://fleet-dd.herokuapp.com/fleet/api/car/1",
+							"protocol": "https",
 							"host": [
 								"fleet-dd",
 								"herokuapp",
@@ -271,6 +261,162 @@
 								"fleet",
 								"api",
 								"car",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bill",
+			"item": [
+				{
+					"name": "Add bill",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjMyMjYyNDk3LCJleHAiOjE2MzI4NjcyOTd9.eaZaKWLb2GghSAotG5pcvGNBsCfRZo42lzzdzbppSR7ysYAHkqBzWBGAOD_m7iI7TOcAbyA13HcoY8lGtGOWsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"bill 1\",\r\n    \"provider\": \"Service A\",\r\n    \"type\": \"CASCO\",\r\n    \"validUntil\": \"2021-12-13\",\r\n    \"date\": \"2021-09-22\",\r\n    \"price\": 1550.40,\r\n    \"carId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://fleet-dd.herokuapp.com/fleet/api/bill",
+							"protocol": "https",
+							"host": [
+								"fleet-dd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"fleet",
+								"api",
+								"bill"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update bill",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjMyMjYxMDIwLCJleHAiOjE2MzI4NjU4MjB9.xFc4ieJ0w5Ixc0LRp5GWirjH79YoYGkPGVWznWuo3kpW_3Eh22VYHjHEoe4rW9VtQmu4_WnR2_F6F7iH0yfW2g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"bill 1\",\r\n    \"provider\": \"Service updated\",\r\n    \"type\": \"RCA\",\r\n    \"validUntil\": \"2021-12-13\",\r\n    \"date\": \"2021-09-20\",\r\n    \"price\": 1580.40\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://fleet-dd.herokuapp.com/fleet/api/bill/1",
+							"protocol": "https",
+							"host": [
+								"fleet-dd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"fleet",
+								"api",
+								"bill",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete bill by id",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjMyMjYxMDIwLCJleHAiOjE2MzI4NjU4MjB9.xFc4ieJ0w5Ixc0LRp5GWirjH79YoYGkPGVWznWuo3kpW_3Eh22VYHjHEoe4rW9VtQmu4_WnR2_F6F7iH0yfW2g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"contentType": "image/jpeg",
+									"type": "file",
+									"src": "/C:/Users/Bianca/Desktop/bucatarie.JPG"
+								},
+								{
+									"key": "description",
+									"value": "bucatarie",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "bucatarie",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "bucatarie",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://fleet-dd.herokuapp.com/fleet/api/bill/1",
+							"protocol": "https",
+							"host": [
+								"fleet-dd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"fleet",
+								"api",
+								"bill",
 								"1"
 							]
 						}
@@ -297,8 +443,8 @@
 					}
 				},
 				"url": {
-					"raw": "http://fleet-dd.herokuapp.com/fleet/api/auth/signup",
-					"protocol": "http",
+					"raw": "https://fleet-dd.herokuapp.com/fleet/api/auth/signup",
+					"protocol": "https",
 					"host": [
 						"fleet-dd",
 						"herokuapp",
@@ -350,10 +496,40 @@
 			"response": []
 		}
 	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjMyMjYxMDIwLCJleHAiOjE2MzI4NjU4MjB9.xFc4ieJ0w5Ixc0LRp5GWirjH79YoYGkPGVWznWuo3kpW_3Eh22VYHjHEoe4rW9VtQmu4_WnR2_F6F7iH0yfW2g",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
 	"variable": [
 		{
 			"key": "url",
-			"value": "localhost:5000/"
+			"value": "localhost:5000/fleet/api"
 		}
 	]
 }
