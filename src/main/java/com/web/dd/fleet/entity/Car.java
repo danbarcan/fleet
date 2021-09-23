@@ -41,6 +41,8 @@ public class Car implements Serializable {
 
     private LocalDate cascoDate;
 
+    private LocalDate revisionDate;
+
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")

@@ -79,6 +79,7 @@ public class CarService {
                 .rcaDate(LocalDate.parse(carPayload.getRcaDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")))
                 .cascoDate(LocalDate.parse(carPayload.getCascoDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")))
                 .vignetteDate(LocalDate.parse(carPayload.getVignetteDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+                .revisionDate(LocalDate.parse(carPayload.getRevisionDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")))
                 .build();
 
         carRepository.save(car);
@@ -112,6 +113,7 @@ public class CarService {
         car.setRcaDate(LocalDate.parse(carPayload.getRcaDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         car.setCascoDate(LocalDate.parse(carPayload.getCascoDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         car.setVignetteDate(LocalDate.parse(carPayload.getVignetteDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        car.setRevisionDate(LocalDate.parse(carPayload.getRevisionDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 
         carRepository.save(car);
 

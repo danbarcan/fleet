@@ -27,6 +27,7 @@ public class CarPayload implements Serializable {
     private String rcaDate;
     private String vignetteDate;
     private String cascoDate;
+    private String revisionDate;
 
     public static CarPayload createJobResponsePayloadFromJob(Car car) {
         return CarPayload.builder()
@@ -41,6 +42,7 @@ public class CarPayload implements Serializable {
                 .rcaDate(car.getRcaDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
                 .vignetteDate(car.getVignetteDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
                 .cascoDate(car.getCascoDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+                .revisionDate(car.getRevisionDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
                 .build();
     }
 }
