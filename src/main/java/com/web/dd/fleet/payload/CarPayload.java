@@ -1,10 +1,12 @@
 package com.web.dd.fleet.payload;
 
+import com.web.dd.fleet.entity.Bill;
 import com.web.dd.fleet.entity.Car;
 import com.web.dd.fleet.utils.DateUtils;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -20,7 +22,7 @@ public class CarPayload implements Serializable {
     private String type;
     private String registration;
     private Set<OperationPayload> operations;
-    private Set<BillPayload> bills;
+    private Map<Integer, BillPayload> bills;
 
     private String itpDate;
     private String rcaDate;
@@ -36,13 +38,17 @@ public class CarPayload implements Serializable {
                 .type(car.getType())
                 .registration(car.getRegistration())
 //                .operations(car.getOperations() == null ? null : car.getOperations().stream().map(OperationPayload::createOperationPayloadFromOperation).collect(Collectors.toSet()))
-                .bills(car.getBills() == null ? null : car.getBills().stream().map(BillPayload::createBillPayloadFromOperation).collect(Collectors.toSet()))
+                .bills(car.getBills() == null ? null : getListOfBillsByYear(car.getBills()))
                 .itpDate(DateUtils.toString(car.getItpDate()))
                 .rcaDate(DateUtils.toString(car.getRcaDate()))
                 .vignetteDate(DateUtils.toString(car.getVignetteDate()))
                 .cascoDate(DateUtils.toString(car.getCascoDate()))
                 .revisionDate(DateUtils.toString(car.getRevisionDate()))
                 .build();
+    }
+
+    private static Map<Integer, BillPayload> getListOfBillsByYear(Set<Bill> bills) {
+        return bills.stream().map(BillPayload::createBillPayloadFromOperation).collect(Collectors.toMap(e -> DateUtils.parseDate(e.getDate()).getYear(), e -> e));
     }
 
 }
