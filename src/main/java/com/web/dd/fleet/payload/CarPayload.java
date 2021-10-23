@@ -1,11 +1,10 @@
 package com.web.dd.fleet.payload;
 
 import com.web.dd.fleet.entity.Car;
+import com.web.dd.fleet.utils.DateUtils;
 import lombok.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -38,11 +37,12 @@ public class CarPayload implements Serializable {
                 .registration(car.getRegistration())
 //                .operations(car.getOperations() == null ? null : car.getOperations().stream().map(OperationPayload::createOperationPayloadFromOperation).collect(Collectors.toSet()))
                 .bills(car.getBills() == null ? null : car.getBills().stream().map(BillPayload::createBillPayloadFromOperation).collect(Collectors.toSet()))
-                .itpDate(car.getItpDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
-                .rcaDate(car.getRcaDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
-                .vignetteDate(car.getVignetteDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
-                .cascoDate(car.getCascoDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
-                .revisionDate(car.getRevisionDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+                .itpDate(DateUtils.toString(car.getItpDate()))
+                .rcaDate(DateUtils.toString(car.getRcaDate()))
+                .vignetteDate(DateUtils.toString(car.getVignetteDate()))
+                .cascoDate(DateUtils.toString(car.getCascoDate()))
+                .revisionDate(DateUtils.toString(car.getRevisionDate()))
                 .build();
     }
+
 }

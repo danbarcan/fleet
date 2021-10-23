@@ -1,6 +1,7 @@
 package com.web.dd.fleet.entity;
 
 import com.web.dd.fleet.payload.BillPayload;
+import com.web.dd.fleet.utils.DateUtils;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -64,14 +65,15 @@ public class Bill implements Serializable {
                 .description(billPayload.getDescription())
                 .provider(billPayload.getProvider())
                 .type(billPayload.getType())
-                .validUntil(LocalDate.parse(billPayload.getValidUntil(), DateTimeFormatter.ofPattern("yyyy-MM-dd")))
-                .date(LocalDate.parse(billPayload.getDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+                .validUntil(DateUtils.parseDate(billPayload.getValidUntil()))
+                .date(DateUtils.parseDate(billPayload.getDate()))
                 .price(billPayload.getPrice())
                 .car(car)
                 .timestamp(Timestamp.from(Instant.now()))
                 .user(user)
                 .build();
     }
+
     public void updateFromPayload(BillPayload billPayload) {
         setProvider(billPayload.getProvider());
         setDescription(billPayload.getDescription());

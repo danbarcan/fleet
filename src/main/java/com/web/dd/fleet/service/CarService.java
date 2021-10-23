@@ -8,13 +8,12 @@ import com.web.dd.fleet.repository.OperationRepository;
 import com.web.dd.fleet.repository.UserRepository;
 import com.web.dd.fleet.security.UserPrincipal;
 import com.web.dd.fleet.utils.AppUtils;
+import com.web.dd.fleet.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -75,11 +74,11 @@ public class CarService {
                 .model(carPayload.getModel())
                 .type(carPayload.getType())
                 .registration(carPayload.getRegistration())
-                .itpDate(LocalDate.parse(carPayload.getItpDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")))
-                .rcaDate(LocalDate.parse(carPayload.getRcaDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")))
-                .cascoDate(LocalDate.parse(carPayload.getCascoDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")))
-                .vignetteDate(LocalDate.parse(carPayload.getVignetteDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")))
-                .revisionDate(LocalDate.parse(carPayload.getRevisionDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+                .itpDate(DateUtils.parseDate(carPayload.getItpDate()))
+                .rcaDate(DateUtils.parseDate(carPayload.getRcaDate()))
+                .cascoDate(DateUtils.parseDate(carPayload.getCascoDate()))
+                .vignetteDate(DateUtils.parseDate(carPayload.getVignetteDate()))
+                .revisionDate(DateUtils.parseDate(carPayload.getRevisionDate()))
                 .build();
 
         carRepository.save(car);
@@ -109,11 +108,11 @@ public class CarService {
         car.setModel(carPayload.getModel());
         car.setType(carPayload.getType());
         car.setRegistration(carPayload.getRegistration());
-        car.setItpDate(LocalDate.parse(carPayload.getItpDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        car.setRcaDate(LocalDate.parse(carPayload.getRcaDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        car.setCascoDate(LocalDate.parse(carPayload.getCascoDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        car.setVignetteDate(LocalDate.parse(carPayload.getVignetteDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        car.setRevisionDate(LocalDate.parse(carPayload.getRevisionDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        car.setItpDate(DateUtils.parseDate(carPayload.getItpDate()));
+        car.setRcaDate(DateUtils.parseDate(carPayload.getRcaDate()));
+        car.setCascoDate(DateUtils.parseDate(carPayload.getCascoDate()));
+        car.setVignetteDate(DateUtils.parseDate(carPayload.getVignetteDate()));
+        car.setRevisionDate(DateUtils.parseDate(carPayload.getRevisionDate()));
 
         carRepository.save(car);
 

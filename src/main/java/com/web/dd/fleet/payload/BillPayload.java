@@ -1,6 +1,7 @@
 package com.web.dd.fleet.payload;
 
 import com.web.dd.fleet.entity.*;
+import com.web.dd.fleet.utils.DateUtils;
 import lombok.*;
 
 import java.io.Serializable;
@@ -33,8 +34,8 @@ public class BillPayload implements Serializable {
                 .provider(b.getProvider())
                 .description(b.getDescription())
                 .type(b.getType())
-                .validUntil(b.getValidUntil().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
-                .date(b.getDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+                .validUntil(DateUtils.toString(b.getValidUntil()))
+                .date(DateUtils.toString(b.getDate()))
                 .price(b.getPrice())
                 .timestamp(b.getTimestamp())
                 .build();
