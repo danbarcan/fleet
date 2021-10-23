@@ -20,6 +20,7 @@ public class UserPayload implements Serializable {
     private String name;
     private String username;
     private String email;
+    private String phoneNumber;
 
     public static UserPayload createUserPayloadFromUser(User user) {
         return UserPayload.builder()
@@ -27,6 +28,7 @@ public class UserPayload implements Serializable {
                 .name(user.getName())
                 .username(user.getUsername())
                 .email(user.getEmail())
+                .phoneNumber(user.getPhoneNumber())
                 .build();
     }
 }

@@ -36,6 +36,9 @@ public class User implements Serializable {
     @Email
     private String email;
 
+    @Size(max = 13)
+    private String phoneNumber;
+
     @JsonIgnore
     @NotBlank
     @Size(max = 100)

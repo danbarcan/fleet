@@ -435,7 +435,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"email\": \"test@test.com\",\r\n  \"name\": \"test\",\r\n  \"password\": \"parola\",\r\n  \"username\": \"test\"\r\n}",
+					"raw": "{\r\n  \"email\": \"test@test.com\",\r\n  \"name\": \"test\",\r\n  \"password\": \"parola\",\r\n  \"username\": \"test\",  \r\n\"phoneNumber\": \"0123456789\"}",
 					"options": {
 						"raw": {
 							"language": "json"

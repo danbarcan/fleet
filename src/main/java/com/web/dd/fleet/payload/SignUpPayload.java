@@ -28,4 +28,7 @@ public class SignUpPayload {
     @NotBlank
     @Size(min = 6, max = 20)
     private String password;
+
+    @Size(min = 10, max = 13)
+    private String phoneNumber;
 }
