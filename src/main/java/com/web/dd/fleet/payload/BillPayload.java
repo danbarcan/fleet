@@ -1,14 +1,14 @@
 package com.web.dd.fleet.payload;
 
-import com.web.dd.fleet.entity.*;
+import com.web.dd.fleet.entity.Bill;
+import com.web.dd.fleet.entity.BillType;
+import com.web.dd.fleet.entity.User;
 import com.web.dd.fleet.utils.DateUtils;
 import lombok.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 @Data
 @Builder

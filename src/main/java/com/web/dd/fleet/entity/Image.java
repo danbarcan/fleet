@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @Builder
@@ -13,7 +14,7 @@ import javax.persistence.*;
 @EqualsAndHashCode
 @Entity
 @Table(name = "images")
-public class Image {
+public class Image implements Serializable {
 
     @Id
     @GeneratedValue(generator = "uuid")

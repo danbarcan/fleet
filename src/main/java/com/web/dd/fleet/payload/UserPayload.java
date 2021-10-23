@@ -1,13 +1,8 @@
 package com.web.dd.fleet.payload;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.web.dd.fleet.entity.User;
 import lombok.*;
 
-import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Data

@@ -21,7 +21,6 @@ public class CarPayload implements Serializable {
     private String make;
     private String type;
     private String registration;
-    private Set<OperationPayload> operations;
     private Map<Integer, BillPayload> bills;
 
     private String itpDate;
@@ -37,7 +36,6 @@ public class CarPayload implements Serializable {
                 .make(car.getMake())
                 .type(car.getType())
                 .registration(car.getRegistration())
-//                .operations(car.getOperations() == null ? null : car.getOperations().stream().map(OperationPayload::createOperationPayloadFromOperation).collect(Collectors.toSet()))
                 .bills(car.getBills() == null ? null : getListOfBillsByYear(car.getBills()))
                 .itpDate(DateUtils.toString(car.getItpDate()))
                 .rcaDate(DateUtils.toString(car.getRcaDate()))

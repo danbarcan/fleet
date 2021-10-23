@@ -52,16 +52,10 @@ public class Car implements Serializable {
     @OneToMany(mappedBy = "car", cascade = CascadeType.REMOVE)
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    private Set<Operation> operations;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "car", cascade = CascadeType.REMOVE)
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
     private Set<Bill> bills;
 
     @PreRemove
     public void preRemove() {
-        setOperations(null);
+        setBills(null);
     }
 }

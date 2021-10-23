@@ -3,8 +3,8 @@ package com.web.dd.fleet.service;
 import com.web.dd.fleet.entity.Car;
 import com.web.dd.fleet.entity.User;
 import com.web.dd.fleet.payload.CarPayload;
+import com.web.dd.fleet.repository.BillRepository;
 import com.web.dd.fleet.repository.CarRepository;
-import com.web.dd.fleet.repository.OperationRepository;
 import com.web.dd.fleet.repository.UserRepository;
 import com.web.dd.fleet.security.UserPrincipal;
 import com.web.dd.fleet.utils.AppUtils;
@@ -23,13 +23,13 @@ public class CarService {
 
     private CarRepository carRepository;
     private UserRepository userRepository;
-    private OperationRepository operationRepository;
+    private BillRepository billRepository;
 
     @Autowired
-    public CarService(final CarRepository carRepository, final UserRepository userRepository, final OperationRepository operationRepository) {
+    public CarService(final CarRepository carRepository, final UserRepository userRepository, final BillRepository billRepository) {
         this.carRepository = carRepository;
         this.userRepository = userRepository;
-        this.operationRepository = operationRepository;
+        this.billRepository = billRepository;
     }
 
     public ResponseEntity<List<CarPayload>> getAllCarsForCurrentUser() {
@@ -132,7 +132,7 @@ public class CarService {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
 
-        car.getOperations().forEach(operation -> operationRepository.delete(operation));
+        car.getBills().forEach(operation -> billRepository.delete(operation));
         carRepository.delete(car);
 
         return ResponseEntity.ok(mapListOfCarsToResponse(carRepository.findAllByUser(car.getUser())));
