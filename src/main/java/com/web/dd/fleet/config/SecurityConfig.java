@@ -2,6 +2,7 @@ package com.web.dd.fleet.config;
 
 
 import com.web.dd.fleet.security.CustomUserDetailsService;
+import com.web.dd.fleet.security.JwtAuthenticationEntryPoint;
 import com.web.dd.fleet.security.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -16,14 +17,31 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    private static final String[] AUTH_WHITELIST = {
+            // -- Swagger UI v2
+            "/v2/api-docs",
+            "/swagger-resources",
+            "/swagger-resources/**",
+            "/configuration/ui",
+            "/configuration/security",
+            "/swagger-ui.html",
+            "/webjars/**",
+            // -- Swagger UI v3 (OpenAPI)
+            "/v3/api-docs/**",
+            "/swagger-ui/**",
+            // other public endpoints of your API may be appended to this array
+            "/auth/**"
+    };
 
     private CustomUserDetailsService customUserDetailsService;
+    private JwtAuthenticationEntryPoint unauthorizedHandler;
 
     @Autowired
     public SecurityConfig(final CustomUserDetailsService customUserDetailsService) {
@@ -56,24 +74,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http
-                .cors()
-                .and()
-                .csrf()
-                .disable()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .authorizeRequests()
-                .anyRequest().permitAll()
-//                .authorizeRequests()
-//                .antMatchers("/auth/signin", "/auth/signup").permitAll()
-//                .antMatchers("/item").authenticated()
-                //.anyRequest().authenticated()
-                .and()
-                .logout()
-                .permitAll();
-        // .antMatchers("/lost-and-found/auth/signin").permitAll();
+                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                .authorizeRequests().antMatchers(AUTH_WHITELIST).permitAll()
+                .antMatchers("/test/**").permitAll()
+                .anyRequest().authenticated()
+                .and().httpBasic().and().cors().and().csrf().disable();
+
+        http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
     }
 }
