@@ -21,7 +21,7 @@ public class CarPayload implements Serializable {
     private String make;
     private String type;
     private String registration;
-    private Map<Integer, BillPayload> bills;
+    private Map<Integer, Set<BillPayload>> bills;
 
     private String itpDate;
     private String rcaDate;
@@ -45,8 +45,11 @@ public class CarPayload implements Serializable {
                 .build();
     }
 
-    private static Map<Integer, BillPayload> getListOfBillsByYear(Set<Bill> bills) {
-        return bills.stream().map(BillPayload::createBillPayloadFromOperation).collect(Collectors.toMap(e -> DateUtils.parseDate(e.getDate()).getYear(), e -> e));
+    private static Map<Integer, Set<BillPayload>> getListOfBillsByYear(Set<Bill> bills) {
+        return bills.stream()
+                .map(BillPayload::createBillPayloadFromOperation)
+                .collect(Collectors.groupingBy(e -> DateUtils.parseDate(e.getDate()).getYear(),
+                        Collectors.mapping(e -> e, Collectors.toSet())));
     }
 
 }
