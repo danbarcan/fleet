@@ -67,6 +67,8 @@ public class AuthService {
                 .password(signUpPayload.getPassword())
                 .username(signUpPayload.getUsername())
                 .phoneNumber(signUpPayload.getPhoneNumber())
+                .emailNotification(signUpPayload.getEmailNotification())
+                .smsNotification(signUpPayload.getSmsNotification())
                 .build();
 
         user.setPassword(encodePassword(user.getPassword()));

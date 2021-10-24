@@ -31,4 +31,7 @@ public class SignUpPayload {
 
     @Size(min = 10, max = 13)
     private String phoneNumber;
+
+    private Boolean emailNotification;
+    private Boolean smsNotification;
 }

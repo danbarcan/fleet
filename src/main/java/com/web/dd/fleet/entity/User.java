@@ -43,4 +43,7 @@ public class User implements Serializable {
     @NotBlank
     @Size(max = 100)
     private String password;
+
+    private Boolean emailNotification;
+    private Boolean smsNotification;
 }
