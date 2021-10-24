@@ -15,7 +15,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class BillService {
@@ -98,5 +100,28 @@ public class BillService {
         billRepository.delete(bill);
 
         return ResponseEntity.ok(CarPayload.createJobResponsePayloadFromJob(carRepository.getById(bill.getCar().getId())));
+    }
+
+    public ResponseEntity<Map<Integer, Set<BillPayload>>> getBillsByCarId(Long carId) {
+        UserPrincipal userPrincipal = AppUtils.getCurrentUserDetails();
+        Optional<User> user = userRepository.findById(userPrincipal.getId());
+        if (!user.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+
+        Optional<Car> carOptional = carRepository.findById(carId);
+        if (!carOptional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+
+        Car car = carOptional.get();
+
+        if (!car.getUser().getId().equals(user.get().getId())) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+
+        CarPayload carPayload = CarPayload.createJobResponsePayloadFromJob(car);
+
+        return ResponseEntity.ok(carPayload.getBills());
     }
 }

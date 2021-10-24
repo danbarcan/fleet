@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Map;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/bill")
@@ -20,6 +22,12 @@ public class BillController {
         this.billService = billService;
     }
 
+    @GetMapping("/car/{carId}")
+//    @PreAuthorize("hasRole('ROLE_USER')")
+    public ResponseEntity<Map<Integer, Set<BillPayload>>> getBillsByCarId(@PathVariable Long carId) {
+        return billService.getBillsByCarId(carId);
+    }
+
     @PostMapping()
 //    @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<CarPayload> addBill(@Valid @RequestBody BillPayload billPayload) {
@@ -28,13 +36,13 @@ public class BillController {
 
     @PutMapping("/{billId}")
 //    @PreAuthorize("hasRole('ROLE_USER')")
-    public ResponseEntity<CarPayload> updateCar(@PathVariable Long billId, @Valid @RequestBody BillPayload billPayload) {
+    public ResponseEntity<CarPayload> updateBill(@PathVariable Long billId, @Valid @RequestBody BillPayload billPayload) {
         return billService.updateBill(billId, billPayload);
     }
 
     @DeleteMapping("/{billId}")
 //    @PreAuthorize("hasRole('ROLE_USER')")
-    public ResponseEntity<CarPayload> deleteCar(@PathVariable Long billId) {
+    public ResponseEntity<CarPayload> deleteBill(@PathVariable Long billId) {
         return billService.deleteBill(billId);
     }
 }
