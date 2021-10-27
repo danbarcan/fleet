@@ -1,5 +1,6 @@
 package com.web.dd.fleet.payload;
 
+import com.web.dd.fleet.entity.Role;
 import com.web.dd.fleet.entity.User;
 import lombok.*;
 
@@ -18,6 +19,7 @@ public class UserPayload implements Serializable {
     private String phoneNumber;
     private Boolean emailNotification;
     private Boolean smsNotification;
+    private Role role;
 
     public static UserPayload createUserPayloadFromUser(User user) {
         return UserPayload.builder()
@@ -28,6 +30,7 @@ public class UserPayload implements Serializable {
                 .phoneNumber(user.getPhoneNumber())
                 .emailNotification(user.getEmailNotification())
                 .smsNotification(user.getSmsNotification())
+                .role(user.getRole())
                 .build();
     }
 }

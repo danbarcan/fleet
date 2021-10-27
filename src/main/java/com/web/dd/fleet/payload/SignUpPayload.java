@@ -1,11 +1,13 @@
 package com.web.dd.fleet.payload;
 
+import com.web.dd.fleet.entity.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Data
@@ -32,6 +34,8 @@ public class SignUpPayload {
     @Size(min = 10, max = 13)
     private String phoneNumber;
 
+    @NotNull
+    private Role role;
     private Boolean emailNotification;
     private Boolean smsNotification;
 }

@@ -61,13 +61,14 @@ public class UserService {
         user.setPhoneNumber(userPayload.getPhoneNumber());
         user.setEmailNotification(userPayload.getEmailNotification());
         user.setSmsNotification(userPayload.getSmsNotification());
+        user.setRole(userPayload.getRole());
 
         userRepository.save(user);
 
         return ResponseEntity.ok(UserPayload.createUserPayloadFromUser(user));
     }
 
-    public ResponseEntity.HeadersBuilder<?> deleteUser(Long userId) {
+    public ResponseEntity.HeadersBuilder deleteUser(Long userId) {
         UserPrincipal userPrincipal = AppUtils.getCurrentUserDetails();
         if (!userPrincipal.getId().equals(userId)) {
             return ResponseEntity.badRequest();
